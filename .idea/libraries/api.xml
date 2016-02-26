@@ -2,31 +2,31 @@
   <library name="api">
     <CLASSES />
     <JAVADOC>
-      <root url="file://$USER_HOME$/LIBRERIAS/db4o-8.0/doc/api" />
-      <root url="file://$USER_HOME$/LIBRERIAS/db4o-8.0/doc/osgi" />
+      <root url="file://$APPLICATION_HOME_DIR$/librerias/db4o-8.0/doc/api" />
+      <root url="file://$APPLICATION_HOME_DIR$/librerias/db4o-8.0/doc/osgi" />
     </JAVADOC>
     <SOURCES>
-      <root url="file://$USER_HOME$/LIBRERIAS/db4o-8.0/doc/tutorial/src" />
-      <root url="file://$USER_HOME$/LIBRERIAS/db4o-8.0/src/bloat/src" />
-      <root url="file://$USER_HOME$/LIBRERIAS/db4o-8.0/src/db4o.cs.optional/src" />
-      <root url="file://$USER_HOME$/LIBRERIAS/db4o-8.0/src/db4o.cs/src" />
-      <root url="file://$USER_HOME$/LIBRERIAS/db4o-8.0/src/db4o.instrumentation/src" />
-      <root url="file://$USER_HOME$/LIBRERIAS/db4o-8.0/src/db4o.instrumentation/test" />
-      <root url="file://$USER_HOME$/LIBRERIAS/db4o-8.0/src/db4o_osgi/src" />
-      <root url="file://$USER_HOME$/LIBRERIAS/db4o-8.0/src/db4o_osgi_test/src" />
-      <root url="file://$USER_HOME$/LIBRERIAS/db4o-8.0/src/db4oj.optional/core/src" />
-      <root url="file://$USER_HOME$/LIBRERIAS/db4o-8.0/src/db4oj.optional/tools/src" />
-      <root url="file://$USER_HOME$/LIBRERIAS/db4o-8.0/src/db4oj.tests/src" />
-      <root url="file://$USER_HOME$/LIBRERIAS/db4o-8.0/src/db4oj/core/src" />
-      <root url="file://$USER_HOME$/LIBRERIAS/db4o-8.0/src/db4oj/plugins/src" />
-      <root url="file://$USER_HOME$/LIBRERIAS/db4o-8.0/src/db4onqopt/core/src" />
-      <root url="file://$USER_HOME$/LIBRERIAS/db4o-8.0/src/db4onqopt/test/src" />
-      <root url="file://$USER_HOME$/LIBRERIAS/db4o-8.0/src/db4otaj/src" />
-      <root url="file://$USER_HOME$/LIBRERIAS/db4o-8.0/src/db4otaj/test" />
-      <root url="file://$USER_HOME$/LIBRERIAS/db4o-8.0/src/db4otools/src" />
-      <root url="file://$USER_HOME$/LIBRERIAS/db4o-8.0/src/db4otools/test" />
-      <root url="file://$USER_HOME$/LIBRERIAS/db4o-8.0/src/db4ounit.extensions/src" />
-      <root url="file://$USER_HOME$/LIBRERIAS/db4o-8.0/src/db4ounit/src" />
+      <root url="file://$APPLICATION_HOME_DIR$/librerias/db4o-8.0/doc/tutorial/src" />
+      <root url="file://$APPLICATION_HOME_DIR$/librerias/db4o-8.0/src/bloat/src" />
+      <root url="file://$APPLICATION_HOME_DIR$/librerias/db4o-8.0/src/db4o.cs.optional/src" />
+      <root url="file://$APPLICATION_HOME_DIR$/librerias/db4o-8.0/src/db4o.cs/src" />
+      <root url="file://$APPLICATION_HOME_DIR$/librerias/db4o-8.0/src/db4o.instrumentation/src" />
+      <root url="file://$APPLICATION_HOME_DIR$/librerias/db4o-8.0/src/db4o.instrumentation/test" />
+      <root url="file://$APPLICATION_HOME_DIR$/librerias/db4o-8.0/src/db4o_osgi/src" />
+      <root url="file://$APPLICATION_HOME_DIR$/librerias/db4o-8.0/src/db4o_osgi_test/src" />
+      <root url="file://$APPLICATION_HOME_DIR$/librerias/db4o-8.0/src/db4oj.optional/core/src" />
+      <root url="file://$APPLICATION_HOME_DIR$/librerias/db4o-8.0/src/db4oj.optional/tools/src" />
+      <root url="file://$APPLICATION_HOME_DIR$/librerias/db4o-8.0/src/db4oj.tests/src" />
+      <root url="file://$APPLICATION_HOME_DIR$/librerias/db4o-8.0/src/db4oj/core/src" />
+      <root url="file://$APPLICATION_HOME_DIR$/librerias/db4o-8.0/src/db4oj/plugins/src" />
+      <root url="file://$APPLICATION_HOME_DIR$/librerias/db4o-8.0/src/db4onqopt/core/src" />
+      <root url="file://$APPLICATION_HOME_DIR$/librerias/db4o-8.0/src/db4onqopt/test/src" />
+      <root url="file://$APPLICATION_HOME_DIR$/librerias/db4o-8.0/src/db4otaj/src" />
+      <root url="file://$APPLICATION_HOME_DIR$/librerias/db4o-8.0/src/db4otaj/test" />
+      <root url="file://$APPLICATION_HOME_DIR$/librerias/db4o-8.0/src/db4otools/src" />
+      <root url="file://$APPLICATION_HOME_DIR$/librerias/db4o-8.0/src/db4otools/test" />
+      <root url="file://$APPLICATION_HOME_DIR$/librerias/db4o-8.0/src/db4ounit.extensions/src" />
+      <root url="file://$APPLICATION_HOME_DIR$/librerias/db4o-8.0/src/db4ounit/src" />
     </SOURCES>
   </library>
 </component>

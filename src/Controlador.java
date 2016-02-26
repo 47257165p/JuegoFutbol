@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -20,27 +21,48 @@ public class Controlador {
 
     public static void menu()
     {
-        System.out.println("-MENÚ PRINCIPAL-");
-        System.out.println("1. Jugadores");
-        System.out.println("2. Equipos");
-        System.out.println("3. Entrenadores");
-        System.out.println("4. Ligas");
-        System.out.println("5. Salir");
-        System.out.println("----------------");
-
-        switch (in.nextInt())
+        boolean keep = true;
+        while (keep)
         {
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            case 5: break;
+            System.out.println("-MENÚ PRINCIPAL-");
+            System.out.println("1. Jugadores");
+            System.out.println("2. Equipos");
+            System.out.println("3. Entrenadores");
+            System.out.println("4. Ligas");
+            System.out.println("5. Salir");
+            System.out.println("----------------");
 
-            default: break;
+            try
+            {
+                switch (in.nextInt())
+                {
+                    case 1:
+                        menuJugadores();
+                        break;
+                    case 2:
+                        menuEquipos();
+                        break;
+                    case 3:
+                        menuEntrenadores();
+                        break;
+                    case 4:
+                        menuLigas();
+                        break;
+                    case 5:
+                        System.out.println("Aplicación finalizada, muchas gracias.");
+                        keep = false;
+                        break;
+
+                    default:
+                        System.out.println("La opción introducida no existe. Intenta de nuevo.");
+                        break;
+                }
+            }
+            catch (Exception e)
+            {
+                System.out.println("Has introducido un caracter inválido. Intenta de nuevo.");
+                in.reset();
+            }
         }
     }
 
@@ -50,27 +72,35 @@ public class Controlador {
         System.out.println("1. Crear");
         System.out.println("2. Modificar");
         System.out.println("3. Borrar");
-        System.out.println("5. Salir");
+        System.out.println("4. Buscar");
+        System.out.println("5. Mostrar todos");
+        System.out.println("6. Salir");
         System.out.println("--------------");
 
-        Jugador jugador = new Jugador();
-
+        int posicion;
         switch (in.nextInt())
         {
             case 1:
-                crearJugador(jugador);
+                jugadores.add(crearJugador(new Jugador()));
                 break;
             case 2:
-                jugador = buscarJugador();
-                System.out.println("Se va a modificar el jugador " + jugadore.getNombre() + ". Todos los datos que se introduzcan a continuación modificarán los ya existentes.");
-                crearJugador(jugador);
+                posicion = buscarJugador();
+                if (posicion!=-1)
+                {
+                    System.out.println("Se va a modificar el jugador " + jugadores.get(posicion).getNombre() + ". Todos los datos que se introduzcan a continuación modificarán los ya existentes.");
+                    crearJugador(jugadores.get(posicion));
+                }
                 break;
             case 3:
+                posicion = buscarJugador();
+                if (posicion!=-1)
+                {
+                    jugadores.remove(posicion);
+                    System.out.println("Se ha eliminado el jugador.");
+                }
 
                 break;
             case 4:
-                break;
-            case 5:
                 break;
             default:
                 break;
@@ -78,7 +108,7 @@ public class Controlador {
         menu();
     }
 
-    public static void crearJugador(Jugador jugador)
+    public static Jugador crearJugador(Jugador jugador)
     {
         System.out.println("Introduce el nombre del jugador:");
         String nombre = in.nextLine();
@@ -118,18 +148,19 @@ public class Controlador {
                 System.out.println("Se ha creado el jugador correctamente.");
                 break;
         }
-        jugadores.add(jugador);
+        return jugador;
     }
 
-    public static Jugador buscarJugador()
+    public static int buscarJugador()
     {
         System.out.println("Introduce el DNI del jugador:");
         String dni = in.next();
+        int position = -1;
         try
         {
-            for (Jugador jugadore : jugadores) {
-                if (jugadore.getDNI().equals(dni)) {
-                    return jugadore;
+            for (int i = 0; i < jugadores.size(); i++) {
+                if (jugadores.get(i).getDNI().equals(dni)) {
+                    position = i;
                 }
             }
             System.out.println("No se ha encontrado el jugador con DNI: "+dni);
@@ -137,6 +168,9 @@ public class Controlador {
         catch (NullPointerException e)
         {
             System.out.println("No hay ningún jugador registrado en la base de datos.");
+        }
+        finally {
+            return position;
         }
     }
     public static void menuEquipos()
