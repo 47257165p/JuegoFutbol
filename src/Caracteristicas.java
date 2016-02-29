@@ -68,4 +68,9 @@ public class Caracteristicas {
         this.resistencia=resistencia;
         this.tiro=tiro;
     }
+
+    public String toString()
+    {
+        return "Agilidad = "+agilidad+"\nFuerza = "+fuerza+"\nVelocidad = "+velocidad+"\nResistencia = "+resistencia+"\nTiro = "+tiro;
+    }
 }

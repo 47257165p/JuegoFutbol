@@ -4,14 +4,14 @@
  */
 public class Jugador {
 
-    private String DNI = "00000000A";
+    private String dni = "00000000A";
     private String nombre = "Unnasigned";
     private String apellido = "Unnasigned";
     private double altura = -1;
     private Caracteristicas caracteristicas = new Caracteristicas();
 
-    public Jugador(String DNI, String nombre, String apellido, double altura) {
-        this.DNI = DNI;
+    public Jugador(String dni, String nombre, String apellido, double altura) {
+        this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
         this.altura = altura;
@@ -19,12 +19,12 @@ public class Jugador {
     public Jugador(){
     }
 
-    public String getDNI() {
-        return DNI;
+    public String getDni() {
+        return dni;
     }
 
-    public void setDNI(String DNI) {
-        this.DNI = DNI;
+    public void setDni(String dni) {
+        this.dni = dni;
     }
 
     public String getNombre() {
@@ -67,5 +67,10 @@ public class Jugador {
     public void seTraspasa()
     {
 
+    }
+
+    public String toString()
+    {
+        return "Jugador:\nDNI = "+dni+"\nNombre = "+nombre+"\nApellido = "+apellido+"\nAltura = "+altura+"\n"+caracteristicas.toString();
     }
 }

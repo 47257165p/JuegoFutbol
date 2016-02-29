@@ -1,22 +1,73 @@
+import com.db4o.Db4o;
+import com.db4o.ObjectContainer;
+import com.db4o.ObjectSet;
+
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
-
 /**
  * Created by 47257165p on 26/02/16.
  */
 public class Controlador {
 
-    private static ArrayList<Liga> ligas = new ArrayList<>();
-    private static ArrayList<Equipo> equipos = new ArrayList<>();
-    private static ArrayList<Jugador> jugadores = new ArrayList<>();
-    private static ArrayList<Entrenador> entrenadores = new ArrayList<>();
-
+    private static ObjectContainer database;
     private static Scanner in = new Scanner(System.in);
+    private static String basura;
 
     public static void main(String[] args) {
 
+        createDB();
         menu();
+    }
+
+    public List getChildren() {
+
+        ArrayList<String> childrenList = new ArrayList();
+
+        childrenList.add("a");
+        childrenList.add("a");
+        childrenList.add("a");
+
+
+        return childrenList;
+    }
+
+    public static void createDB()
+    {
+        File db = new File("/database.data");
+        if (!db.exists())
+        {
+            try
+            {
+                db.createNewFile();
+            }
+            catch (IOException e)
+            {
+                System.out.println("Error al crear la base de datos.");
+            }
+        }
+    }
+
+    public static void openDB()
+    {
+        try
+        {
+            database = Db4o.openFile("database.data");
+        }
+        catch (Exception e)
+        {
+            System.out.println("Error al abrir la base de datos. Cerrando...");
+            database.close();
+        }
+    }
+
+    public static void saveAndCloseDB()
+    {
+        database.commit();
+        database.close();
     }
 
     public static void menu()
@@ -31,6 +82,8 @@ public class Controlador {
             System.out.println("4. Ligas");
             System.out.println("5. Salir");
             System.out.println("----------------");
+
+            in = new Scanner(System.in);
 
             try
             {
@@ -54,14 +107,13 @@ public class Controlador {
                         break;
 
                     default:
-                        System.out.println("La opción introducida no existe. Intenta de nuevo.");
+                        System.out.println("La opción introducida no existe. Intenta de nuevo.\n");
                         break;
                 }
             }
-            catch (Exception e)
+            catch (InputMismatchException e)
             {
-                System.out.println("Has introducido un caracter inválido. Intenta de nuevo.");
-                in.reset();
+                System.out.println("Has introducido un caracter inválido. Intenta de nuevo.\n");
             }
         }
     }
@@ -77,31 +129,47 @@ public class Controlador {
         System.out.println("6. Salir");
         System.out.println("--------------");
 
-        int posicion;
+        Jugador jugador;
         switch (in.nextInt())
         {
             case 1:
-                jugadores.add(crearJugador(new Jugador()));
+                openDB();
+                database.store(crearJugador(new Jugador()));
+                saveAndCloseDB();
                 break;
             case 2:
-                posicion = buscarJugador();
-                if (posicion!=-1)
+                openDB();
+                jugador = buscarJugador();
+                if (jugador!=null)
                 {
-                    System.out.println("Se va a modificar el jugador " + jugadores.get(posicion).getNombre() + ". Todos los datos que se introduzcan a continuación modificarán los ya existentes.");
-                    crearJugador(jugadores.get(posicion));
+                    System.out.println("Se va a modificar el jugador " + jugador.getNombre() + ". Todos los datos que se introduzcan a continuación modificarán los ya existentes.");
+                    jugador = crearJugador(jugador);
+                    database.store(jugador);
                 }
+                saveAndCloseDB();
                 break;
             case 3:
-                posicion = buscarJugador();
-                if (posicion!=-1)
+                openDB();
+                jugador = buscarJugador();
+                if (jugador!=null)
                 {
-                    jugadores.remove(posicion);
+                    database.delete(jugador);
                     System.out.println("Se ha eliminado el jugador.");
                 }
-
+                saveAndCloseDB();
                 break;
             case 4:
+                openDB();
+                jugador = buscarJugador();
+                if (jugador!=null)
+                {
+                    System.out.println(jugador.toString());
+                }
+                database.close();
                 break;
+            case 5:
+                openDB();
+                database.close();
             default:
                 break;
         }
@@ -112,6 +180,7 @@ public class Controlador {
     {
         System.out.println("Introduce el nombre del jugador:");
         String nombre = in.nextLine();
+        basura = in.next();
         System.out.println("Introduce el apellido del jugador:");
         String apellido = in.nextLine();
         System.out.println("Introduce el DNI del jugador:");
@@ -121,7 +190,7 @@ public class Controlador {
 
         jugador.setNombre(nombre);
         jugador.setApellido(apellido);
-        jugador.setDNI(dni);
+        jugador.setDni(dni);
         jugador.setAltura(altura);
 
         System.out.println("¿Quieres asignarle características? 1 = SÍ. 2 = NO.");
@@ -145,22 +214,25 @@ public class Controlador {
                 break;
 
             case 2:
-                System.out.println("Se ha creado el jugador correctamente.");
+                System.out.println("Se ha creado el jugador correctamente.\n");
                 break;
         }
         return jugador;
     }
 
-    public static int buscarJugador()
+    public static Jugador buscarJugador()
     {
         System.out.println("Introduce el DNI del jugador:");
         String dni = in.next();
-        int position = -1;
+        Jugador jugador = null;
         try
         {
+            ObjectSet<Jugador> jugadores = database.queryByExample(new Jugador());
+
             for (int i = 0; i < jugadores.size(); i++) {
-                if (jugadores.get(i).getDNI().equals(dni)) {
-                    position = i;
+                if (jugadores.get(i).getDni().equals(dni)) {
+                    jugador = jugadores.get(i);
+                    return jugador;
                 }
             }
             System.out.println("No se ha encontrado el jugador con DNI: "+dni);
@@ -170,7 +242,7 @@ public class Controlador {
             System.out.println("No hay ningún jugador registrado en la base de datos.");
         }
         finally {
-            return position;
+            return jugador;
         }
     }
     public static void menuEquipos()
