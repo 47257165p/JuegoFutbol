@@ -3,11 +3,11 @@
  */
 public class Caracteristicas {
 
-    private byte agilidad = -1;
-    private byte fuerza = -1;
-    private byte velocidad = -1;
-    private byte resistencia = -1;
-    private byte tiro = -1;
+    private byte agilidad;
+    private byte fuerza;
+    private byte velocidad;
+    private byte resistencia;
+    private byte tiro;
 
     public Caracteristicas(byte agilidad, byte fuerza, byte velocidad, byte resistencia, byte tiro) {
         this.agilidad = agilidad;
@@ -71,6 +71,6 @@ public class Caracteristicas {
 
     public String toString()
     {
-        return "Agilidad = "+agilidad+"\nFuerza = "+fuerza+"\nVelocidad = "+velocidad+"\nResistencia = "+resistencia+"\nTiro = "+tiro;
+        return "Agilidad = "+agilidad+" - Fuerza = "+fuerza+" - Velocidad = "+velocidad+" - Resistencia = "+resistencia+" - Tiro = "+tiro;
     }
 }

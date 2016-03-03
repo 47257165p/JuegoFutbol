@@ -5,14 +5,16 @@ import java.util.ArrayList;
  */
 public class Equipo {
 
-    private String nombre = "Unnasigned";
-    private String estadio = "Unnasigned";
-    private Entrenador entrenador = new Entrenador();
+    private String nombre;
+    private String estadio;
+    private Entrenador entrenador;
     private ArrayList<Jugador> jugadores;
+    private boolean enLiga;
 
     public Equipo(String nombre, String estadio) {
         this.nombre = nombre;
         this.estadio = estadio;
+        this.enLiga=false;
     }
 
     public Equipo(){
@@ -50,6 +52,13 @@ public class Equipo {
         this.jugadores = jugadores;
     }
 
+    public boolean isEnLiga() {
+        return enLiga;
+    }
+
+    public void setEnLiga(boolean enLiga) {
+        this.enLiga = enLiga;
+    }
     public void cambioLiga()
     {
 

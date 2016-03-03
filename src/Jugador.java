@@ -1,20 +1,23 @@
+import com.sun.org.apache.xml.internal.security.signature.ObjectContainer;
 
 /**
  * Created by 47257165p on 26/02/16.
  */
 public class Jugador {
 
-    private String dni = "00000000A";
-    private String nombre = "Unnasigned";
-    private String apellido = "Unnasigned";
-    private double altura = -1;
-    private Caracteristicas caracteristicas = new Caracteristicas();
+    private String dni;
+    private String nombre;
+    private String apellido;
+    private double altura;
+    private Caracteristicas caracteristicas;
+    private boolean enEquipo;
 
     public Jugador(String dni, String nombre, String apellido, double altura) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
         this.altura = altura;
+        this.enEquipo = false;
     }
     public Jugador(){
     }
@@ -35,17 +38,11 @@ public class Jugador {
         this.nombre = nombre;
     }
 
-    public String getApellido() {
-        return apellido;
-    }
 
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
 
-    public double getAltura() {
-        return altura;
-    }
 
     public void setAltura(double altura) {
         this.altura = altura;
@@ -59,14 +56,12 @@ public class Jugador {
         this.caracteristicas = caracteristicas;
     }
 
-    public void seRetira()
-    {
-
+    public boolean isEnEquipo() {
+        return enEquipo;
     }
 
-    public void seTraspasa()
-    {
-
+    public void setEnEquipo(boolean enEquipo) {
+        this.enEquipo = enEquipo;
     }
 
     public String toString()

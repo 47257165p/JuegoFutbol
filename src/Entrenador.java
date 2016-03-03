@@ -3,12 +3,14 @@
  */
 public class Entrenador {
 
-    private String nombre = "Unnasigned";
-    private byte añosExperiencia = -1;
+    private String nombre;
+    private byte añosExperiencia;
+    private boolean tieneEquipo;
 
     public Entrenador(String nombre, byte añosExperiencia) {
         this.nombre = nombre;
         this.añosExperiencia = añosExperiencia;
+        this.tieneEquipo = false;
     }
 
     public Entrenador (){
@@ -29,6 +31,10 @@ public class Entrenador {
     public void setAñosExperiencia(byte añosExperiencia) {
         this.añosExperiencia = añosExperiencia;
     }
+
+    public boolean isTieneEquipo() {return tieneEquipo;}
+
+    public void setTieneEquipo(boolean tieneEquipo) {this.tieneEquipo = tieneEquipo;}
 
     public void cambioEquipo()
     {

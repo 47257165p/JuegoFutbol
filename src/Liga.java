@@ -5,9 +5,9 @@ import java.util.ArrayList;
  */
 public class Liga {
 
-    private String nombre = "Unnasigned";
-    private String patrocinador = "Unnasigned";
-    private byte categoria = -1;
+    private String nombre;
+    private String patrocinador;
+    private byte categoria;
     private ArrayList<Equipo> equipos;
 
     public Liga(String nombre, String patrocinador, byte categoria) {
@@ -35,9 +35,6 @@ public class Liga {
         this.patrocinador = patrocinador;
     }
 
-    public byte getCategoria() {
-        return categoria;
-    }
 
     public void setCategoria(byte categoria) {
         this.categoria = categoria;
@@ -51,8 +48,4 @@ public class Liga {
         this.equipos = equipos;
     }
 
-    public void cambioPatrocinador()
-    {
-
-    }
 }
